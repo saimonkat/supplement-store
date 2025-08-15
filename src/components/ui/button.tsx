@@ -2,7 +2,7 @@ import type { Route } from 'next';
 
 import clsx from 'clsx';
 
-import Link from '@/components/shared/link';
+import Link from '@/components/ui/link';
 
 import { ClassName } from '@/types/classname';
 
@@ -14,9 +14,17 @@ const styles = {
   size: {
     md: 'h-10 text-14 px-4 rounded-md',
     sm: 'h-9 text-14 px-4 rounded-md',
+    icon: 'h-10 w-10',
+    lg: 'h-11 text-16 px-8 rounded-md',
   },
   theme: {
-    'black-filled': 'bg-[#000] text-[#fff]',
+    'black-filled': 'bg-[#000] text-[#fff] hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200',
+    'primary': 'bg-primary text-primary-foreground hover:bg-primary/90',
+    'secondary': 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
+    'outline': 'border border-input bg-background hover:bg-accent hover:text-accent-foreground',
+    'ghost': 'hover:bg-accent hover:text-accent-foreground',
+    'destructive': 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
+    'link': 'text-primary underline-offset-4 hover:underline',
   },
 };
 
@@ -27,29 +35,39 @@ type ButtonProps<T extends string> = ClassName & {
   children: React.ReactNode;
   state?: (typeof STATE)[keyof typeof STATE];
   onClick?: (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement, MouseEvent>) => void;
+  variant?: keyof typeof styles.theme; // shadcn/ui compatibility
+  type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
 };
 
 function Button({
   className: additionalClassName,
   size,
   theme,
+  variant,
   href = undefined,
   children,
   state = STATE.DEFAULT,
+  type = 'button',
+  disabled = false,
+  onClick,
   ...props
 }: ButtonProps<string>) {
+  // Use variant if provided, fallback to theme for backward compatibility
+  const buttonTheme = variant || theme;
+
   const linkClassName = clsx(
     styles.transition,
-    size && theme && styles.base,
+    size && buttonTheme && styles.base,
     size && styles.size[size],
-    theme && styles.theme[theme],
+    buttonTheme && styles.theme[buttonTheme],
     additionalClassName,
   );
 
   // TODO: use design variable for additional styles for the button
   let design;
 
-  switch (theme) {
+  switch (buttonTheme) {
     case 'black-filled':
       design = <></>;
       break;
@@ -90,14 +108,20 @@ function Button({
 
   if (href) {
     return (
-      <Link className={linkClassName} href={href} {...props}>
+      <Link className={linkClassName} href={href} onClick={onClick} {...props}>
         {content}
       </Link>
     );
   }
 
   return (
-    <button className={linkClassName} disabled={state === STATE.LOADING} {...props}>
+    <button
+      className={linkClassName}
+      disabled={disabled || state === STATE.LOADING}
+      type={type}
+      onClick={onClick}
+      {...props}
+    >
       {content}
     </button>
   );

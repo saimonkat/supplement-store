@@ -2,7 +2,7 @@
 
 import { AnimatePresence, LazyMotion, domAnimation, m } from 'framer-motion';
 
-import Link from '@/components/shared/link';
+import Link from '@/components/ui/link';
 
 import { MENUS } from '@/constants/menus';
 

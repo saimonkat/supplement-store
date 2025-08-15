@@ -12,9 +12,11 @@ const styles = {
     xs: 'text-14 tracking-tight',
   },
   theme: {
-    white: 'text-white hover:text-gray-80',
-    gray: 'text-gray-94 hover:text-gray-70',
-    black: 'text-black hover:text-gray-20',
+    white: 'text-white hover:text-gray-80 dark:text-white dark:hover:text-gray-200',
+    gray: 'text-gray-94 hover:text-gray-70 dark:text-gray-300 dark:hover:text-gray-100',
+    black: 'text-black hover:text-gray-20 dark:text-white dark:hover:text-gray-200',
+    primary: 'text-primary hover:text-primary/80',
+    secondary: 'text-secondary hover:text-secondary/80',
   },
 };
 
