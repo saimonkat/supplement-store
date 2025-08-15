@@ -16,18 +16,24 @@
     "prepare": "npm run update-git-hooks"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.2.3",
     "@typescript-eslint/parser": "^8.39.1",
+    "class-variance-authority": "^0.7.1",
     "copy-to-clipboard": "^3.3.3",
     "framer-motion": "^12.23.12",
     "hls.js": "^1.6.10",
+    "lucide-react": "^0.539.0",
     "next": "^15.4.6",
     "next-sitemap": "^4.2.3",
+    "next-themes": "^0.4.6",
     "postcss-nesting": "^12.1.5",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-intersection-observer": "^9.16.0",
     "sharp": "^0.34.3",
-    "tailwindcss": "^3.4.17"
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss": "^3.4.17",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
