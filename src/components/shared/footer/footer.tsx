@@ -36,7 +36,7 @@ function Footer() {
                       <li className="flex" key={index}>
                         <Link
                           className="whitespace-nowrap font-medium leading-none tracking-tight opacity-80 hover:opacity-100 transition-opacity"
-                          href={href}
+                          href={href as any}
                           size="md"
                           rel={isExternalUrl ? 'noopener noreferrer' : undefined}
                           target={isExternalUrl ? '_blank' : undefined}
@@ -60,7 +60,7 @@ function Footer() {
               <li className="flex" key={index}>
                 <Link
                   className="group h-5 w-5"
-                  href={href}
+                  href={href as any}
                   theme="white"
                   rel="noopener noreferrer"
                   title={label}

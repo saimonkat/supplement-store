@@ -1,5 +1,6 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
 
 import { useMobileMenu } from '@/hooks/use-mobile-menu';
 
@@ -12,10 +13,15 @@ import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { MENUS } from '@/constants/menus';
 import { ROUTE } from '@/constants/route';
 
+import CartIcon from '@/svgs/icons/cart.inline.svg';
 import Logo from '@/svgs/logo.inline.svg';
 
 function Header() {
   const { isMobileMenuOpen, toggleMobileMenu } = useMobileMenu();
+  const pathname = usePathname();
+
+  const isAdminRoute = pathname?.startsWith('/admin');
+  const isStoreRoute = pathname?.startsWith('/store') || pathname === '/';
 
   return (
     <>
@@ -28,17 +34,38 @@ function Header() {
               <span>STORE</span>
             </div>
           </Link>
+
+          {/* Desktop Navigation */}
           <ul className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 gap-x-6 md:hidden">
             {MENUS.header.map(({ label, href }, index) => (
               <li key={index}>
-                <Link size="sm" theme="black" href={href}>
+                <Link
+                  size="sm"
+                  theme={isAdminRoute && href === ROUTE.admin ? "primary" : "black"}
+                  href={href as any}
+                >
                   {label}
                 </Link>
               </li>
             ))}
           </ul>
+
+          {/* Right Side Actions */}
           <div className="flex items-center gap-x-4">
             <ThemeToggle />
+
+            {/* Cart Icon for Store Routes */}
+            {isStoreRoute && (
+              <Link href={ROUTE.cart as any} className="relative p-2">
+                <span className="sr-only">Shopping Cart</span>
+                <CartIcon width={24} height={24} />
+                {/* Cart Badge - will be dynamic later */}
+                {/* <span className="absolute -top-1 -left-1 h-5 w-5 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center">
+                  0
+                </span> */}
+              </Link>
+            )}
+
             <Button
               className="font-medium md:hidden"
               theme="black-filled"
@@ -47,6 +74,7 @@ function Header() {
             >
               Contact us
             </Button>
+
             <Burger
               className="hidden md:block"
               isToggled={isMobileMenuOpen}

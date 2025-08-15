@@ -29,7 +29,7 @@ function MobileMenu({ isOpen, onClick }: { isOpen: boolean; onClick: () => void 
       <AnimatePresence>
         {isOpen && (
           <m.nav
-            className="absolute inset-x-0 bottom-0 top-0 z-40 hidden bg-[#fff] bg-opacity-95 px-safe md:block"
+            className="absolute inset-x-0 bottom-0 top-0 z-40 hidden bg-background/95 backdrop-blur-sm px-safe md:block"
             initial="closed"
             animate="opened"
             exit="closed"
@@ -39,8 +39,8 @@ function MobileMenu({ isOpen, onClick }: { isOpen: boolean; onClick: () => void 
             <div className="flex h-full w-full px-4 py-16 text-left">
               <ul className="flex w-full flex-col overflow-y-auto">
                 {MENUS.header.map(({ label, href }, index) => (
-                  <li className="h-14 border-b border-black" key={index}>
-                    <Link className="text-gray-8 block py-5 leading-none" href={href} size="md">
+                  <li className="h-14 border-b border-border" key={index}>
+                    <Link className="text-foreground block py-5 leading-none hover:text-primary transition-colors" href={href as any} size="md">
                       {label}
                     </Link>
                   </li>

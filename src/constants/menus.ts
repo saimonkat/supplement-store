@@ -1,46 +1,47 @@
 import { ROUTE } from '@/constants/route';
 
-// FIXME: Replace with actual menu items
 export const MENUS = {
   header: [
-    { label: 'About', href: ROUTE.index },
-    { label: 'Blog', href: ROUTE.index },
+    { label: 'Store', href: ROUTE.store },
+    { label: 'Products', href: ROUTE.products },
+    { label: 'Admin', href: ROUTE.admin },
   ],
   footer: {
     main: [
       {
-        heading: 'Company',
+        heading: 'Store',
         links: [
           { label: 'Home', href: ROUTE.index },
-          { label: 'About us', href: ROUTE.index },
-          { label: 'Enterprise', href: ROUTE.index },
-          { label: 'Pricing', href: ROUTE.index },
+          { label: 'Products', href: ROUTE.products },
+          { label: 'Best Sellers', href: ROUTE.store },
+          { label: 'Categories', href: ROUTE.products },
         ],
       },
       {
-        heading: 'Resources',
+        heading: 'Support',
         links: [
-          { label: 'Blog', href: ROUTE.index },
-          { label: 'Documentation', href: ROUTE.index },
-          { label: 'Community', href: ROUTE.index },
-          { label: 'Support', href: ROUTE.index },
+          { label: 'Contact Us', href: ROUTE.index },
+          { label: 'Shipping Info', href: ROUTE.index },
+          { label: 'Returns', href: ROUTE.index },
+          { label: 'FAQ', href: ROUTE.index },
         ],
       },
       {
-        heading: 'Legal',
+        heading: 'Company',
         links: [
-          { label: 'Terms of service', href: ROUTE.index },
-          { label: 'Privacy policy', href: ROUTE.index },
-          { label: 'Cookie policy', href: ROUTE.index },
+          { label: 'About Us', href: ROUTE.index },
+          { label: 'Privacy Policy', href: ROUTE.index },
+          { label: 'Terms of Service', href: ROUTE.index },
+          { label: 'Admin Portal', href: ROUTE.admin },
         ],
       },
     ],
     social: [
-      { label: 'X.com (Twitter)', href: ROUTE.index, icon: 'xcom-icon' },
-      { label: 'LinkedIn', href: ROUTE.index, icon: 'linkedin-icon' },
-      { label: 'GitHub', href: ROUTE.index, icon: 'github-icon' },
-      { label: 'YouTube', href: ROUTE.index, icon: 'youtube-icon' },
-      { label: 'Discord', href: ROUTE.index, icon: 'discord-icon' },
+      { label: 'X.com (Twitter)', href: 'https://x.com', icon: 'xcom-icon' },
+      { label: 'LinkedIn', href: 'https://linkedin.com', icon: 'linkedin-icon' },
+      { label: 'GitHub', href: 'https://github.com', icon: 'github-icon' },
+      { label: 'YouTube', href: 'https://youtube.com', icon: 'youtube-icon' },
+      { label: 'Discord', href: 'https://discord.com', icon: 'discord-icon' },
     ],
   },
 };
