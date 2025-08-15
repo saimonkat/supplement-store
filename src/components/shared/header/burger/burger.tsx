@@ -26,7 +26,7 @@ function Burger({
         <div className="absolute -inset-5" aria-hidden />
         <span className="relative block h-7 w-7">
           <m.span
-            className="absolute right-0 top-1 block h-0.5 w-7 rounded-full bg-[#000] transition-colors duration-200"
+            className="absolute right-0 top-1 block h-0.5 w-7 rounded-full bg-foreground transition-colors duration-200"
             variants={{
               initial: {
                 top: 4,
@@ -44,7 +44,7 @@ function Burger({
             }}
           />
           <m.span
-            className="absolute right-0 top-[13px] block h-0.5 w-7 rounded-full bg-[#000] transition-colors duration-200"
+            className="absolute right-0 top-[13px] block h-0.5 w-7 rounded-full bg-foreground transition-colors duration-200"
             variants={{
               initial: {
                 opacity: 1,
@@ -57,7 +57,7 @@ function Burger({
             }}
           />
           <m.span
-            className="absolute bottom-1 right-0 block h-0.5 w-7 rounded-full bg-[#000] transition-colors duration-200"
+            className="absolute bottom-1 right-0 block h-0.5 w-7 rounded-full bg-foreground transition-colors duration-200"
             variants={{
               initial: {
                 bottom: 4,
@@ -75,7 +75,7 @@ function Burger({
             }}
           />
           <m.span
-            className="absolute right-0 top-3.5 h-0.5 w-7 rounded-full bg-[#000] opacity-0 transition-colors duration-200"
+            className="absolute right-0 top-3.5 h-0.5 w-7 rounded-full bg-foreground opacity-0 transition-colors duration-200"
             variants={{
               initial: {
                 rotate: '0deg',
@@ -96,7 +96,7 @@ function Burger({
             }}
           />
           <m.span
-            className="absolute right-0 top-3.5 h-0.5 w-7 rounded-full bg-[#000] opacity-0 transition-colors duration-200"
+            className="absolute right-0 top-3.5 h-0.5 w-7 rounded-full bg-foreground opacity-0 transition-colors duration-200"
             variants={{
               initial: {
                 rotate: '0deg',

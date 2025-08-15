@@ -21,9 +21,12 @@ function Header() {
     <>
       <header className="absolute left-0 right-0 top-0 z-50 h-16 px-safe pt-safe">
         <nav className="container flex h-full items-center justify-between" aria-label="Global">
-          <Link href="/">
-            <Logo width={40} height={40} alt="Logo" />
-            <span className="sr-only">Supplement Store</span>
+          <Link href="/" className="flex items-center gap-2">
+            <Logo className="sm:size-8" width={40} height={40} alt="Logo" />
+            <div className="flex flex-col text-lg font-extrabold text-foreground leading-none sm:text-md">
+              <span>SUPPLEMENT</span>
+              <span>STORE</span>
+            </div>
           </Link>
           <ul className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 gap-x-6 md:hidden">
             {MENUS.header.map(({ label, href }, index) => (
@@ -44,12 +47,12 @@ function Header() {
             >
               Contact us
             </Button>
+            <Burger
+              className="hidden md:block"
+              isToggled={isMobileMenuOpen}
+              onClick={toggleMobileMenu}
+            />
           </div>
-          <Burger
-            className="hidden md:block"
-            isToggled={isMobileMenuOpen}
-            onClick={toggleMobileMenu}
-          />
         </nav>
       </header>
       <MobileMenu isOpen={isMobileMenuOpen} onClick={toggleMobileMenu} />

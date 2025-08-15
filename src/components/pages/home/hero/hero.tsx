@@ -5,7 +5,7 @@ function Hero() {
         <div className="mx-auto flex max-w-[680px] flex-col gap-y-5">
           <h1 className="fs-40 font-semibold">Welcome!</h1>
           <p className="text-18 leading-snug tracking-tight sm:text-16">
-            to the Next.js TypeScript Tailwind Starter.
+            to the Supplement Store.
           </p>
         </div>
       </div>

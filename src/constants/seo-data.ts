@@ -3,13 +3,13 @@ import { ROUTE } from '@/constants/route';
 // FIXME: Add real data here
 export const SEO_DATA = {
   notFound: {
-    title: 'Page Not Found - Next.js TypeScript Tailwind Starter',
-    description: 'Page Not Found - Next.js TypeScript Tailwind Starter',
+    title: 'Page Not Found - Supplement Store',
+    description: 'Page Not Found - Supplement Store',
     pathname: '',
   },
   index: {
-    title: 'Home - Next.js TypeScript Tailwind Starter',
-    description: 'Next.js TypeScript Tailwind Starter',
+    title: 'Supplement Store',
+    description: 'Supplement Store',
     pathname: ROUTE.index as string,
   },
 };
