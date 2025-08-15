@@ -1,0 +1,45 @@
+{
+  "name": "Supplement Store",
+  "icons": [
+    {
+      "src": "/favicon-48x48.jpg?v=1da2d840ad5552453e2f5a72785744b7",
+      "sizes": "48x48",
+      "type": "image/jpg"
+    },
+    {
+      "src": "/favicon-72x72.jpg?v=1da2d840ad5552453e2f5a72785744b7",
+      "sizes": "72x72",
+      "type": "image/jpg"
+    },
+    {
+      "src": "/favicon-96x96.jpg?v=1da2d840ad5552453e2f5a72785744b7",
+      "sizes": "96x96",
+      "type": "image/jpg"
+    },
+    {
+      "src": "/favicon-144x144.jpg?v=1da2d840ad5552453e2f5a72785744b7",
+      "sizes": "144x144",
+      "type": "image/jpg"
+    },
+    {
+      "src": "/favicon-192x192.jpg?v=1da2d840ad5552453e2f5a72785744b7",
+      "sizes": "192x192",
+      "type": "image/jpg"
+    },
+    {
+      "src": "/favicon-256x256.jpg?v=1da2d840ad5552453e2f5a72785744b7",
+      "sizes": "256x256",
+      "type": "image/jpg"
+    },
+    {
+      "src": "/favicon-384x384.jpg?v=1da2d840ad5552453e2f5a72785744b7",
+      "sizes": "384x384",
+      "type": "image/jpg"
+    },
+    {
+      "src": "/favicon-512x512.jpg?v=1da2d840ad5552453e2f5a72785744b7",
+      "sizes": "512x512",
+      "type": "image/jpg"
+    }
+  ]
+}

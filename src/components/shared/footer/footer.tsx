@@ -2,12 +2,13 @@ import Image from 'next/image';
 
 import clsx from 'clsx';
 
-import Link from '@/components/shared/link';
+import Link from '@/components/ui/link';
 
 import { MENUS } from '@/constants/menus';
 import { ROUTE } from '@/constants/route';
 
-import logo from '@/svgs/logo.svg';
+import Logo from '@/svgs/logo.inline.svg';
+
 
 function Footer() {
   return (
@@ -16,8 +17,8 @@ function Footer() {
         <div className="flex justify-between md:flex-col">
           <div className="flex flex-col">
             <Link className="block" href={ROUTE.index}>
-              <Image src={logo} width={90} height={18} alt="" />
-              <span className="sr-only">NextJS</span>
+              <Logo width={40} height={40} alt="Logo" />
+              <span className="sr-only">Supplement Store</span>
             </Link>
           </div>
           <nav className="flex w-fit justify-between gap-x-32 gap-y-8 lg:gap-x-20 md:mt-8 md:gap-x-24 xs:grid xs:w-full xs:grid-cols-2 xs:gap-x-5">
