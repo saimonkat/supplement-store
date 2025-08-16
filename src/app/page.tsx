@@ -1,6 +1,8 @@
 import Hero from '@/components/pages/home/hero';
-import BentoGrid from '@/components/pages/home/bento-grid';
+import Categories from '@/components/pages/home/categories';
 import BestSellers from '@/components/pages/home/best-sellers';
+import FAQ from '@/components/shared/sections/faq';
+import CTA from '@/components/shared/sections/cta';
 
 import { getMetadata } from '@/lib/get-metadata';
 
@@ -10,8 +12,10 @@ function Home() {
   return (
     <>
       <Hero />
-      <BentoGrid />
+      <Categories />
       <BestSellers />
+      <FAQ />
+      <CTA />
     </>
   );
 }

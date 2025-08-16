@@ -43,7 +43,7 @@ function Hero() {
             <Button
               theme="secondary"
               size="lg"
-              href={ROUTE.store as any}
+              href={ROUTE.products as any}
               className="text-lg px-8 py-4"
             >
               Learn More

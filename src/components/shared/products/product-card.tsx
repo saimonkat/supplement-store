@@ -7,10 +7,24 @@ import { Product } from '@/types/product';
 interface ProductCardProps {
   product: Product;
   showDescription?: boolean;
+  showAddToCart?: boolean;
+  onAddToCart?: (product: Product) => void;
   className?: string;
 }
 
-function ProductCard({ product, showDescription = true, className = '' }: ProductCardProps) {
+function ProductCard({
+  product,
+  showDescription = true,
+  showAddToCart = false,
+  onAddToCart,
+  className = ''
+}: ProductCardProps) {
+  const handleAddToCart = () => {
+    if (onAddToCart) {
+      onAddToCart(product);
+    }
+  };
+
   return (
     <div className={`bg-card rounded-xl border border-border overflow-hidden hover:border-primary/50 transition-all duration-300 hover:shadow-lg ${className}`}>
       <div className="relative w-full aspect-square overflow-hidden">
@@ -26,6 +40,11 @@ function ProductCard({ product, showDescription = true, className = '' }: Produc
             <span className="text-white font-semibold text-xs md:text-sm">Out of Stock</span>
           </div>
         )}
+        {product.isBestSeller && (
+          <div className="absolute top-2 left-2 bg-primary text-primary-foreground text-xs font-bold px-2 py-1 rounded-full">
+            Best Seller
+          </div>
+        )}
       </div>
 
       <div className="p-3 md:p-4">
@@ -36,6 +55,7 @@ function ProductCard({ product, showDescription = true, className = '' }: Produc
           <div className="flex items-center gap-1">
             <span className="text-xs text-muted-foreground">{product.rating}</span>
             <span className="text-yellow-500 text-xs md:text-sm">★</span>
+            <span className="text-xs text-muted-foreground">({product.reviewCount})</span>
           </div>
         </div>
 
@@ -49,19 +69,36 @@ function ProductCard({ product, showDescription = true, className = '' }: Produc
           </p>
         )}
 
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between mb-3">
           <span className="text-base md:text-lg font-bold text-foreground">
             ${product.price}
           </span>
+          <span className="text-xs text-muted-foreground">
+            {product.weight} • {product.servings} servings
+          </span>
+        </div>
+
+        <div className="flex gap-2">
           <Button
-            theme="primary"
+            theme="outline"
             size="sm"
-            href={`${ROUTE.product.replace('[id]', product.id)}` as any}
-            disabled={!product.inStock}
-            className="text-xs px-2 py-1 md:px-3 md:py-1"
+            href={`${ROUTE.products}/${product.id}` as any}
+            className="flex-1 text-xs px-2 py-1 md:px-3 md:py-1"
           >
-            View
+            View Details
           </Button>
+
+          {showAddToCart && product.inStock && (
+            <Button
+              theme="primary"
+              size="sm"
+              onClick={handleAddToCart}
+              disabled={!product.inStock}
+              className="text-xs px-2 py-1 md:px-3 md:py-1"
+            >
+              Add to Cart
+            </Button>
+          )}
         </div>
       </div>
     </div>

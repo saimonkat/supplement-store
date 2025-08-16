@@ -2,7 +2,7 @@ import { Product } from '@/types/product';
 
 export const products: Product[] = [
   {
-    id: '1',
+    id: 'whey-protein-isolate',
     name: 'Whey Protein Isolate',
     description: 'Premium whey protein isolate for muscle recovery and growth. 25g protein per serving with minimal carbs and fat.',
     price: 49.99,
@@ -19,7 +19,7 @@ export const products: Product[] = [
     createdAt: new Date('2024-01-15'),
   },
   {
-    id: '2',
+    id: 'creatine-monohydrate',
     name: 'Creatine Monohydrate',
     description: 'Pure creatine monohydrate powder for increased strength and power output during high-intensity training.',
     price: 24.99,
@@ -36,7 +36,7 @@ export const products: Product[] = [
     createdAt: new Date('2024-01-10'),
   },
   {
-    id: '3',
+    id: 'pre-workout-energy-blend',
     name: 'Pre-Workout Energy Blend',
     description: 'Advanced pre-workout formula with caffeine, beta-alanine, and nitric oxide boosters for maximum performance.',
     price: 39.99,
@@ -53,7 +53,7 @@ export const products: Product[] = [
     createdAt: new Date('2024-01-20'),
   },
   {
-    id: '4',
+    id: 'multivitamin-complex',
     name: 'Multivitamin Complex',
     description: 'Complete daily multivitamin with minerals and antioxidants for overall health and wellness support.',
     price: 29.99,
@@ -70,7 +70,7 @@ export const products: Product[] = [
     createdAt: new Date('2024-01-05'),
   },
   {
-    id: '5',
+    id: 'bcaa-amino-acids',
     name: 'BCAA Amino Acids',
     description: 'Essential branched-chain amino acids for muscle preservation and recovery during training and dieting.',
     price: 34.99,
@@ -87,7 +87,7 @@ export const products: Product[] = [
     createdAt: new Date('2024-01-12'),
   },
   {
-    id: '6',
+    id: 'omega-3-fish-oil',
     name: 'Omega-3 Fish Oil',
     description: 'High-quality fish oil supplement rich in EPA and DHA for heart health and cognitive function.',
     price: 19.99,
@@ -104,7 +104,7 @@ export const products: Product[] = [
     createdAt: new Date('2024-01-08'),
   },
   {
-    id: '7',
+    id: 'post-workout-recovery',
     name: 'Post-Workout Recovery',
     description: 'Fast-absorbing post-workout formula with protein, carbs, and electrolytes for optimal recovery.',
     price: 44.99,
@@ -121,7 +121,7 @@ export const products: Product[] = [
     createdAt: new Date('2024-01-18'),
   },
   {
-    id: '8',
+    id: 'vitamin-d3-k2',
     name: 'Vitamin D3 + K2',
     description: 'Advanced vitamin D3 and K2 combination for bone health, immune support, and calcium absorption.',
     price: 27.99,

@@ -4,7 +4,7 @@ import Link from '@/components/ui/link';
 
 import { ROUTE } from '@/constants/route';
 
-const items = [
+const categories = [
   {
     id: 1,
     title: 'Protein Power',
@@ -39,9 +39,9 @@ const items = [
   },
 ];
 
-function BentoGrid() {
+function Categories() {
   return (
-    <section className="py-20 px-safe bg-background">
+    <section id="categories" className="py-20 px-safe bg-background">
       <div className="container">
         <div className="text-center mb-16">
           <h2 className="fs-48 font-bold text-foreground mb-4">
@@ -53,7 +53,7 @@ function BentoGrid() {
         </div>
 
         <div className="grid grid-cols-4 gap-6 h-[600px] sm:grid-cols-2 sm:h-auto sm:gap-4">
-          {items.map((item) => (
+          {categories.map((item) => (
             <Link
               key={item.id}
               href={item.href as any}
@@ -84,4 +84,4 @@ function BentoGrid() {
   );
 }
 
-export default BentoGrid;
+export default Categories;

@@ -2,12 +2,14 @@ import type { Route } from 'next';
 
 export const ROUTE = {
   index: '/',
-  store: '/store',
-  products: '/store/products',
-  product: '/store/products/[id]',
-  cart: '/store/cart',
-  checkout: '/store/checkout',
+  categories: '/#categories',
+  bestSellers: '/#best-sellers',
+  faq: '/#faq',
+  products: '/products',
+  cart: '/cart',
+  checkout: '/checkout',
   admin: '/admin',
   orders: '/admin/orders',
   order: '/admin/orders/[id]',
+  contact: 'mailto:contact@supplementstore.com',
 } as const;

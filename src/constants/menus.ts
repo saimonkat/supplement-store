@@ -2,9 +2,11 @@ import { ROUTE } from '@/constants/route';
 
 export const MENUS = {
   header: [
-    { label: 'Store', href: ROUTE.store },
     { label: 'Products', href: ROUTE.products },
-    { label: 'Admin', href: ROUTE.admin },
+    { label: 'Categories', href: ROUTE.categories },
+    { label: 'Best Sellers', href: ROUTE.bestSellers },
+    { label: 'FAQ', href: ROUTE.faq },
+    { label: 'Contact Us', href: ROUTE.contact },
   ],
   footer: {
     main: [
@@ -13,14 +15,14 @@ export const MENUS = {
         links: [
           { label: 'Home', href: ROUTE.index },
           { label: 'Products', href: ROUTE.products },
-          { label: 'Best Sellers', href: ROUTE.store },
-          { label: 'Categories', href: ROUTE.products },
+          { label: 'Best Sellers', href: ROUTE.bestSellers },
+          { label: 'Categories', href: ROUTE.categories },
         ],
       },
       {
         heading: 'Support',
         links: [
-          { label: 'Contact Us', href: ROUTE.index },
+          { label: 'Contact Us', href: ROUTE.contact },
           { label: 'Shipping Info', href: ROUTE.index },
           { label: 'Returns', href: ROUTE.index },
           { label: 'FAQ', href: ROUTE.index },

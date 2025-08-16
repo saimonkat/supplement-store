@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useMobileMenu } from '@/hooks/use-mobile-menu';
 
 import Button from '@/components/ui/button';
-import Burger from '@/components/shared/header/burger';
+import Burger from './burger';
 import Link from '@/components/ui/link';
 import MobileMenu from '@/components/shared/mobile-menu';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
@@ -21,7 +21,6 @@ function Header() {
   const pathname = usePathname();
 
   const isAdminRoute = pathname?.startsWith('/admin');
-  const isStoreRoute = pathname?.startsWith('/store') || pathname === '/';
   const isHomepage = pathname === '/';
 
   // Use white colors on homepage for visibility over black hero
@@ -46,7 +45,7 @@ function Header() {
               <li key={index}>
                 <Link
                   size="sm"
-                  theme={isAdminRoute && href === ROUTE.admin ? "primary" : isHomepage ? "white" : "black"}
+                  theme={isHomepage ? "white" : "black"}
                   href={href as any}
                 >
                   {label}
@@ -60,24 +59,22 @@ function Header() {
             <ThemeToggle className={textColor} />
 
             {/* Cart Icon for Store Routes */}
-            {isStoreRoute && (
-              <Link href={ROUTE.cart as any} className="relative p-2">
-                <span className="sr-only">Shopping Cart</span>
-                <CartIcon width={24} height={24} className={textColor} />
-                {/* Cart Badge - will be dynamic later */}
-                <span className={`absolute -top-1 -left-1 h-5 w-5 rounded-full text-xs flex items-center justify-center ${isHomepage ? 'text-black bg-white' : 'bg-foreground text-background'}`}>
-                  0
-                </span>
-              </Link>
-            )}
+            <Link href={ROUTE.cart as any} className="relative p-2">
+              <span className="sr-only">Shopping Cart</span>
+              <CartIcon width={24} height={24} className={textColor} />
+              {/* Cart Badge - will be dynamic later */}
+              <span className={`absolute -top-1 -left-1 h-5 w-5 rounded-full text-xs flex items-center justify-center ${isHomepage ? 'text-black bg-white' : 'bg-foreground text-background'}`}>
+                0
+              </span>
+            </Link>
 
             <Button
               className='font-medium md:hidden'
               theme={isHomepage ? "outline" : "black-filled"}
               size="sm"
-              href={ROUTE.index}
+              href={ROUTE.admin as any}
             >
-              Contact us
+              Admin
             </Button>
 
             <Burger
