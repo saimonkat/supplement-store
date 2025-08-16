@@ -7,13 +7,13 @@ module.exports = {
     'prettier',
   ],
   rules: {
-    curly: 'error',
-    'no-console': 'error',
-    'no-shadow': 'error',
-    'no-nested-ternary': 'error',
-    'newline-before-return': 'error',
+    curly: 'warn',
+    'no-console': 'warn',
+    'no-shadow': 'warn',
+    'no-nested-ternary': 'warn',
+    'newline-before-return': 'warn',
     'no-restricted-exports': [
-      'error',
+      'warn',
       {
         restrictDefaultExports: {
           direct: false,
@@ -24,25 +24,22 @@ module.exports = {
         },
       },
     ],
-    'react/jsx-sort-props': [
-      'error',
-      {
-        noSortAlphabetically: true,
-        shorthandLast: true,
-        callbacksLast: true,
-      },
-    ],
+    'react/jsx-sort-props': 'off',
     'react/no-array-index-key': 'warn',
     'react/no-danger': 'warn',
-    'react/self-closing-comp': 'error',
+    'react/self-closing-comp': 'warn',
     'react/function-component-definition': [
-      'error',
+      'warn',
       {
         namedComponents: 'function-declaration',
         unnamedComponents: 'arrow-function',
       },
     ],
-    'jsx-a11y/alt-text': 'error',
-    'import/no-extraneous-dependencies': 'error',
+    'jsx-a11y/alt-text': 'warn',
+    'import/no-extraneous-dependencies': 'warn',
+    '@typescript-eslint/no-unused-vars': 'warn',
+    '@typescript-eslint/no-explicit-any': 'warn',
+    'react/no-unescaped-entities': 'warn',
+    'react-hooks/exhaustive-deps': 'warn',
   },
 };

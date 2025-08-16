@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
-import { Search, Filter, Calendar, User, Package, Eye, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Search, ChevronLeft, ChevronRight, Package } from 'lucide-react';
 
 import Button from '@/components/ui/button';
 import { ROUTE } from '@/constants/route';
@@ -135,13 +135,14 @@ function AdminPage() {
         } else if (endDate) {
           return orderDate <= endDate;
         }
+
         return true;
       });
     }
 
     // Sorting
     filtered.sort((a, b) => {
-      let aValue: any, bValue: any;
+      let aValue: string | number | Date, bValue: string | number | Date;
 
       switch (sortBy) {
         case 'createdAt':
@@ -157,8 +158,8 @@ function AdminPage() {
           bValue = b.status;
           break;
         default:
-          aValue = a[sortBy];
-          bValue = b[sortBy];
+          aValue = a[sortBy] as string | number | Date;
+          bValue = b[sortBy] as string | number | Date;
       }
 
       if (sortDirection === 'asc') {
@@ -219,11 +220,11 @@ function AdminPage() {
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <input
-                  type="text"
-                  placeholder="Search by order ID, customer name, or product..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full pl-10 pr-4 py-2 border border-border rounded-lg bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search by order ID, customer name, or product..."
+                  type="text"
+                  value={searchQuery}
                 />
               </div>
             </div>
@@ -234,9 +235,9 @@ function AdminPage() {
                 Status
               </label>
               <select
-                value={statusFilter}
-                onChange={(e) => setStatusFilter(e.target.value as Order['status'] | '')}
                 className="w-full px-3 py-2 border border-border rounded-lg bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                onChange={(e) => setStatusFilter(e.target.value as Order['status'] | '')}
+                value={statusFilter}
               >
                 <option value="">All Statuses</option>
                 <option value="pending">Pending</option>
@@ -254,16 +255,16 @@ function AdminPage() {
               </label>
               <div className="grid grid-cols-2 gap-2">
                 <input
+                  className="px-3 py-2 border border-border rounded-lg bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary text-sm"
+                  onChange={(e) => setDateRange(prev => ({ ...prev, start: e.target.value }))}
                   type="date"
                   value={dateRange.start}
-                  onChange={(e) => setDateRange(prev => ({ ...prev, start: e.target.value }))}
-                  className="px-3 py-2 border border-border rounded-lg bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary text-sm"
                 />
                 <input
+                  className="px-3 py-2 border border-border rounded-lg bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary text-sm"
+                  onChange={(e) => setDateRange(prev => ({ ...prev, end: e.target.value }))}
                   type="date"
                   value={dateRange.end}
-                  onChange={(e) => setDateRange(prev => ({ ...prev, end: e.target.value }))}
-                  className="px-3 py-2 border border-border rounded-lg bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary text-sm"
                 />
               </div>
             </div>
@@ -273,10 +274,10 @@ function AdminPage() {
           {(searchQuery || statusFilter || dateRange.start || dateRange.end) && (
             <div className="mt-4 flex justify-end">
               <Button
-                theme="ghost"
-                size="sm"
-                onClick={clearFilters}
                 className="text-muted-foreground hover:text-foreground"
+                onClick={clearFilters}
+                size="sm"
+                theme="ghost"
               >
                 Clear All Filters
               </Button>
@@ -352,7 +353,7 @@ function AdminPage() {
                     <td className="px-6 py-4 lg:px-4 md:px-3">
                       <div className="text-sm text-foreground">
                         {order.items.map((item, index) => (
-                          <div key={index} className="flex items-center gap-2">
+                          <div key={`${order.id}-item-${index}`} className="flex items-center gap-2">
                             <Package className="h-3 w-3 text-muted-foreground" />
                             {item.product.name}
                           </div>
@@ -369,10 +370,10 @@ function AdminPage() {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium lg:px-4 md:px-3">
                       <Button
-                        theme="outline"
-                        size="sm"
-                        onClick={() => router.push(`${ROUTE.orders}/${order.id}` as any)}
                         className="flex items-center gap-2"
+                        onClick={() => router.push(`${ROUTE.orders}/${order.id}`)}
+                        size="sm"
+                        theme="outline"
                       >
                         View
                       </Button>
@@ -392,10 +393,10 @@ function AdminPage() {
                 </div>
                 <div className="flex items-center gap-2 lg:w-full lg:justify-center">
                   <Button
-                    theme="outline"
-                    size="sm"
-                    onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
                     disabled={currentPage === 1}
+                    onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                    size="sm"
+                    theme="outline"
                   >
                     Previous
                   </Button>
@@ -404,10 +405,10 @@ function AdminPage() {
                     {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                       <Button
                         key={page}
-                        theme={currentPage === page ? "primary" : "ghost"}
-                        size="sm"
-                        onClick={() => setCurrentPage(page)}
                         className="w-10 h-10 p-0"
+                        onClick={() => setCurrentPage(page)}
+                        size="sm"
+                        theme={currentPage === page ? "primary" : "ghost"}
                       >
                         {page}
                       </Button>
@@ -415,10 +416,10 @@ function AdminPage() {
                   </div>
 
                   <Button
-                    theme="outline"
-                    size="sm"
-                    onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
                     disabled={currentPage === totalPages}
+                    onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                    size="sm"
+                    theme="outline"
                   >
                     Next
                   </Button>

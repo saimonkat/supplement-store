@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
-import { ArrowLeft, Calendar, User, Package, DollarSign, Truck, CheckCircle, XCircle, Clock, AlertCircle } from 'lucide-react';
+import { ArrowLeft, Calendar, User, Package, Truck, CheckCircle, XCircle, Clock, AlertCircle } from 'lucide-react';
 
 import Button from '@/components/ui/button';
 import { ROUTE } from '@/constants/route';
@@ -159,7 +159,9 @@ function OrderDetailsPage() {
   }, [params.slug]);
 
   const handleStatusUpdate = async () => {
-    if (!order || statusUpdate === order.status) return;
+    if (!order || statusUpdate === order.status) {
+      return;
+    }
 
     setIsUpdating(true);
 
@@ -200,7 +202,7 @@ function OrderDetailsPage() {
         <div className="container">
           <div className="flex items-center justify-center h-64">
             <div className="text-center">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4" />
               <p className="text-muted-foreground">Loading order details...</p>
             </div>
           </div>
@@ -215,7 +217,7 @@ function OrderDetailsPage() {
         <div className="container">
           <div className="text-center">
             <h1 className="fs-32 font-bold text-foreground mb-4 lg:fs-28 md:fs-24">Order Not Found</h1>
-            <p className="text-muted-foreground mb-6">The order you're looking for doesn't exist.</p>
+            <p className="text-muted-foreground mb-6">The order you&apos;re looking for doesn&apos;t exist.</p>
             <Button onClick={() => router.push(ROUTE.admin)}>
               Back to Admin
             </Button>
@@ -233,9 +235,9 @@ function OrderDetailsPage() {
         {/* Header */}
         <div className="mb-8">
           <Button
-            theme="ghost"
-            onClick={() => router.push(ROUTE.admin)}
             className="mb-4 flex items-center gap-2 text-muted-foreground hover:text-foreground"
+            onClick={() => router.push(ROUTE.admin)}
+            theme="ghost"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to Admin
@@ -272,7 +274,7 @@ function OrderDetailsPage() {
 
               <div className="space-y-4">
                 {order.items.map((item, index) => (
-                  <div key={index} className="flex items-center gap-4 p-4 bg-muted/30 rounded-lg lg:p-3 md:p-3">
+                  <div key={`item-${item.product.name}-${index}`} className="flex items-center gap-4 p-4 bg-muted/30 rounded-lg lg:p-3 md:p-3">
                     <div className="w-16 h-16 bg-muted rounded-lg flex items-center justify-center lg:w-12 lg:h-12 md:w-10 md:h-10">
                       <Package className="h-6 w-6 text-muted-foreground lg:h-5 lg:w-5 md:h-4 md:w-4" />
                     </div>
@@ -321,9 +323,9 @@ function OrderDetailsPage() {
                     Current Status: <span className="font-normal text-muted-foreground">{currentStatus.description}</span>
                   </label>
                   <select
-                    value={statusUpdate}
-                    onChange={(e) => setStatusUpdate(e.target.value as Order['status'])}
                     className="w-full px-3 py-2 border border-border rounded-lg bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                    onChange={(e) => setStatusUpdate(e.target.value as Order['status'])}
+                    value={statusUpdate}
                   >
                     {Object.entries(statusConfig).map(([value, config]) => (
                       <option key={value} value={value}>
@@ -334,9 +336,9 @@ function OrderDetailsPage() {
                 </div>
 
                 <Button
-                  onClick={handleStatusUpdate}
-                  disabled={statusUpdate === order.status || isUpdating}
                   className="w-full"
+                  disabled={statusUpdate === order.status || isUpdating}
+                  onClick={handleStatusUpdate}
                 >
                   {isUpdating ? 'Updating...' : 'Update Status'}
                 </Button>
