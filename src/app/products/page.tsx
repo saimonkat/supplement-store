@@ -36,7 +36,7 @@ function StorePage() {
   }, [filters, sort, searchQuery]);
 
   const handleAddToCart = (product: any) => {
-    addItem(product, 1);
+    addItem(product);
   };
 
   const clearFilters = () => {

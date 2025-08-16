@@ -3,6 +3,7 @@
 import { usePathname } from 'next/navigation';
 
 import { useMobileMenu } from '@/hooks/use-mobile-menu';
+import { useCart } from '@/contexts/cart-context';
 
 import Button from '@/components/ui/button';
 import Burger from './burger';
@@ -18,6 +19,7 @@ import Logo from '@/svgs/logo.inline.svg';
 
 function Header() {
   const { isMobileMenuOpen, toggleMobileMenu } = useMobileMenu();
+  const { getCartItemCount } = useCart();
   const pathname = usePathname();
 
   const isAdminRoute = pathname?.startsWith('/admin');
@@ -26,6 +28,8 @@ function Header() {
   // Use white colors on homepage for visibility over black hero
   const textColor = isHomepage ? 'text-white' : 'text-foreground';
   const bgColor = isHomepage ? 'bg-white' : 'bg-foreground';
+
+  const cartItemCount = getCartItemCount();
 
   return (
     <>
@@ -62,10 +66,12 @@ function Header() {
             <Link href={ROUTE.cart as any} className="relative p-2">
               <span className="sr-only">Shopping Cart</span>
               <CartIcon width={24} height={24} className={textColor} />
-              {/* Cart Badge - will be dynamic later */}
-              <span className={`absolute -top-1 -left-1 h-5 w-5 rounded-full text-xs flex items-center justify-center ${isHomepage ? 'text-black bg-white' : 'bg-foreground text-background'}`}>
-                0
-              </span>
+              {/* Cart Badge - dynamic cart count */}
+              {cartItemCount > 0 && (
+                <span className={`absolute -top-1 -left-1 h-5 w-5 rounded-full text-xs flex items-center justify-center font-bold ${isHomepage ? 'text-black bg-white' : 'bg-foreground text-background'}`}>
+                  {cartItemCount > 9 ? '9+' : cartItemCount}
+                </span>
+              )}
             </Link>
 
             <Button

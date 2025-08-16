@@ -19,7 +19,6 @@ interface ProductPageProps {
 function ProductPage({ params }: ProductPageProps) {
   const { slug } = use(params);
   const { addItem, getItemQuantity, isInCart } = useCart();
-  const [quantity, setQuantity] = useState(1);
 
   const product = products.find(p => p.id === slug);
 
@@ -28,7 +27,7 @@ function ProductPage({ params }: ProductPageProps) {
   }
 
   const handleAddToCart = () => {
-    addItem(product, quantity);
+    addItem(product);
   };
 
   const currentQuantity = getItemQuantity(product.id);
@@ -150,23 +149,6 @@ function ProductPage({ params }: ProductPageProps) {
 
               {product.inStock ? (
                 <div className="space-y-4">
-                  <div className="flex items-center gap-4">
-                    <label className="flex items-center gap-2">
-                      <span className="text-sm font-medium text-foreground">Quantity:</span>
-                      <select
-                        value={quantity}
-                        onChange={(e) => setQuantity(Number(e.target.value))}
-                        className="px-3 py-2 border border-border rounded-lg bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-                      >
-                        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
-                          <option key={num} value={num}>
-                            {num}
-                          </option>
-                        ))}
-                      </select>
-                    </label>
-                  </div>
-
                   <Button
                     theme="primary"
                     size="lg"
@@ -174,7 +156,7 @@ function ProductPage({ params }: ProductPageProps) {
                     className="w-full py-4 text-lg"
                     disabled={!product.inStock}
                   >
-                    {isProductInCart ? 'Add More to Cart' : 'Add to Cart'}
+                    {isProductInCart ? 'Already in Cart' : 'Add to Cart'}
                   </Button>
                 </div>
               ) : (
