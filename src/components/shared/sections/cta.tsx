@@ -3,7 +3,7 @@ import { ROUTE } from '@/constants/route';
 
 function CallToAction() {
   return (
-    <section className="py-32 px-safe text-center relative overflow-hidden md:py-24 bg-gradient-to-b from-transparent from-50% to-primary/10">
+    <section className="py-32 px-safe text-center relative overflow-hidden md:py-24 bg-gradient-to-b from-transparent from-50% to-primary/5">
       <div className="container max-w-3xl mx-auto relative z-10">
         <h2 className="fs-48 font-bold mb-4 leading-tight">
           Ready to Elevate Your Performance?

@@ -1,14 +1,15 @@
 'use client';
 
-import { useState, use } from 'react';
+import { use } from 'react';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
-import { Star, Package, Users, Calendar, CheckCircle } from 'lucide-react';
+import { Star, Package, Users, CheckCircle } from 'lucide-react';
 
 import Button from '@/components/ui/button';
 import { useCart } from '@/contexts/cart-context';
 import { products } from '@/data/products';
 import { ROUTE } from '@/constants/route';
+import CTA from '@/components/shared/sections/cta';
 
 interface ProductPageProps {
   params: Promise<{
@@ -201,21 +202,8 @@ function ProductPage({ params }: ProductPageProps) {
             </div>
           </div>
         </div>
-
-        <div className="text-center py-8 border-t border-border">
-          <p className="text-muted-foreground mb-4">
-            Have questions about this product?
-          </p>
-          <Button
-            theme="outline"
-            size="lg"
-            href={ROUTE.products as any}
-            className="px-8 py-3"
-          >
-            Back to Store
-          </Button>
-        </div>
       </div>
+      <CTA />
     </div>
   );
 }

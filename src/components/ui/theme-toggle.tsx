@@ -10,11 +10,8 @@ import Button from "@/components/ui/button"
 export function ThemeToggle({ className }: ClassName) {
   const { setTheme, theme } = useTheme()
 
-  console.log("ThemeToggle rendered, current theme:", theme)
-
   const handleThemeChange = () => {
     const newTheme = theme === "light" ? "dark" : "light"
-    console.log("Changing theme from", theme, "to", newTheme)
     setTheme(newTheme)
   }
 
