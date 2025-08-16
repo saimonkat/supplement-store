@@ -51,7 +51,7 @@ function Footer() {
             ))}
           </nav>
         </div>
-        <div className="mt-11 flex items-center justify-between gap-y-8 md:mt-8 md:flex-col-reverse md:items-start sm:mt-10 sm:gap-y-10">
+        <div className="mt-16 flex items-center justify-between gap-y-8 md:mt-8 md:flex-col-reverse md:items-start sm:mt-10 sm:gap-y-10">
           <p className="text-14 leading-none tracking-tight text-muted-foreground">
             © {new Date().getFullYear()} — Copyright
           </p>
