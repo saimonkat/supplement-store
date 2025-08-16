@@ -9,7 +9,7 @@ function BestSellers() {
   const bestSellers = getBestSellers(products, 5);
 
   return (
-    <section id="best-sellers" className="py-20 px-safe bg-background">
+    <section id="best-sellers" className="py-20 px-safe">
       <div className="container">
         <div className="text-center mb-16">
           <h2 className="fs-48 font-bold text-foreground mb-4">

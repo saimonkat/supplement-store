@@ -49,7 +49,7 @@ function FAQ() {
   };
 
   return (
-    <section className="py-32 px-safe bg-background md:py-24">
+    <section className="py-32 px-safe md:py-24">
       <div className="container">
         <div className="text-center mb-16">
           <h2 className="fs-48 font-bold text-foreground mb-4">
