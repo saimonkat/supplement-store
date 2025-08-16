@@ -10,7 +10,7 @@ import { STATE } from '@/constants/forms';
 
 const styles = {
   transition: 'transition-colors duration-300',
-  base: 'group inline-flex items-center outline-none relative justify-center tracking-tight',
+  base: 'group inline-flex justify-center items-center outline-none relative justify-center tracking-tight',
   size: {
     md: 'h-10 text-14 px-4 rounded-md',
     sm: 'h-9 text-14 px-4 rounded-md',
@@ -22,7 +22,7 @@ const styles = {
     'primary': 'bg-primary text-primary-foreground hover:bg-primary/90',
     'secondary': 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
     'outline': 'border border-input bg-background hover:bg-accent hover:text-accent-foreground',
-    'ghost': 'hover:bg-accent hover:text-accent-foreground',
+    'ghost': 'hover:text-accent-foreground',
     'destructive': 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
     'link': 'text-primary underline-offset-4 hover:underline',
   },
@@ -64,52 +64,10 @@ function Button({
     additionalClassName,
   );
 
-  // TODO: use design variable for additional styles for the button
-  let design;
-
-  switch (buttonTheme) {
-    case 'black-filled':
-      design = <></>;
-      break;
-    default:
-      design = '';
-  }
-
-  let content = null;
-
-  // TODO: add states if needed
-  switch (state) {
-    case STATE.LOADING:
-      content = (
-        <>
-          <span className="invisible">{children}</span>
-          {/* <LoadingIcon /> */}
-        </>
-      );
-      break;
-    case STATE.SUCCESS:
-      content = (
-        <>
-          <span className="invisible">{children}</span>
-          {/* <SuccessIcon /> */}
-        </>
-      );
-      break;
-    case STATE.ERROR:
-    case STATE.DEFAULT:
-    default:
-      content = (
-        <>
-          {design}
-          <span className="relative z-20">{children}</span>
-        </>
-      );
-  }
-
   if (href) {
     return (
       <Link className={linkClassName} href={href} onClick={onClick} {...props}>
-        {content}
+        {children}
       </Link>
     );
   }
@@ -122,7 +80,7 @@ function Button({
       onClick={onClick}
       {...props}
     >
-      {content}
+      {children}
     </button>
   );
 }

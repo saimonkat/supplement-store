@@ -12,7 +12,7 @@
   }
 
   .fs-48 {
-    @apply text-48 leading-dense tracking-tighter lg:text-40 md:text-32 md:leading-tight sm:text-28;
+    @apply text-48;
   }
 
   .fs-40 {

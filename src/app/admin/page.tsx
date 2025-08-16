@@ -201,18 +201,18 @@ function AdminPage() {
   };
 
   return (
-    <div className="py-40 px-safe md:py-24">
+    <div className="py-40 px-safe lg:py-32 md:py-24">
       <div className="container">
         <div className="mb-12">
-          <h1 className="fs-48 font-bold text-foreground mb-4">Admin Portal</h1>
-          <p className="text-18 text-muted-foreground">Manage orders and monitor store performance</p>
+          <h1 className="fs-48 font-bold text-foreground mb-4 lg:fs-40 md:fs-32">Admin Portal</h1>
+          <p className="text-18 text-muted-foreground lg:text-16 md:text-14">Manage orders and monitor store performance</p>
         </div>
 
         {/* Search and Filters */}
-        <div className="bg-card border border-border rounded-xl p-6 mb-8">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+        <div className="bg-card border border-border rounded-xl p-6 mb-8 lg:p-5 md:p-4">
+          <div className="grid grid-cols-4 gap-6 lg:grid-cols-2 md:grid-cols-1">
             {/* Search */}
-            <div className="lg:col-span-2">
+            <div className="col-span-2 lg:col-span-2 md:col-span-1">
               <label className="block text-sm font-medium text-foreground mb-2">
                 Search Orders
               </label>
@@ -290,7 +290,7 @@ function AdminPage() {
             <table className="w-full">
               <thead className="bg-muted/50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider cursor-pointer hover:bg-muted/70" onClick={() => handleSort('orderNumber')}>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider cursor-pointer hover:bg-muted/70 lg:px-4 md:px-3" onClick={() => handleSort('orderNumber')}>
                     <div className="flex items-center gap-2">
                       Order #
                       {sortBy === 'orderNumber' && (
@@ -298,7 +298,7 @@ function AdminPage() {
                       )}
                     </div>
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider cursor-pointer hover:bg-muted/70" onClick={() => handleSort('createdAt')}>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider cursor-pointer hover:bg-muted/70 lg:px-4 md:px-3" onClick={() => handleSort('createdAt')}>
                     <div className="flex items-center gap-2">
                       Date
                       {sortBy === 'createdAt' && (
@@ -306,13 +306,13 @@ function AdminPage() {
                       )}
                     </div>
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider lg:px-4 md:px-3">
                     Customer
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider lg:px-4 md:px-3">
                     Products
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider cursor-pointer hover:bg-muted/70" onClick={() => handleSort('total')}>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider cursor-pointer hover:bg-muted/70 lg:px-4 md:px-3" onClick={() => handleSort('total')}>
                     <div className="flex items-center gap-2">
                       Total
                       {sortBy === 'total' && (
@@ -320,7 +320,7 @@ function AdminPage() {
                       )}
                     </div>
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider cursor-pointer hover:bg-muted/70" onClick={() => handleSort('status')}>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider cursor-pointer hover:bg-muted/70 lg:px-4 md:px-3" onClick={() => handleSort('status')}>
                     <div className="flex items-center gap-2">
                       Status
                       {sortBy === 'status' && (
@@ -328,7 +328,7 @@ function AdminPage() {
                       )}
                     </div>
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider lg:px-4 md:px-3">
                     Actions
                   </th>
                 </tr>
@@ -336,20 +336,20 @@ function AdminPage() {
               <tbody className="divide-y divide-border">
                 {currentOrders.map((order) => (
                   <tr key={order.id} className="hover:bg-muted/30 transition-colors">
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-6 py-4 whitespace-nowrap lg:px-4 md:px-3">
                       <div className="text-sm font-medium text-foreground">{order.orderNumber}</div>
                       <div className="text-xs text-muted-foreground">{order.id}</div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-foreground">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-foreground lg:px-4 md:px-3">
                       {formatDate(order.createdAt)}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-6 py-4 whitespace-nowrap lg:px-4 md:px-3">
                       <div className="text-sm font-medium text-foreground">
                         {order.customer.firstName} {order.customer.lastName}
                       </div>
                       <div className="text-xs text-muted-foreground">{order.customer.email}</div>
                     </td>
-                    <td className="px-6 py-4">
+                    <td className="px-6 py-4 lg:px-4 md:px-3">
                       <div className="text-sm text-foreground">
                         {order.items.map((item, index) => (
                           <div key={index} className="flex items-center gap-2">
@@ -359,15 +359,15 @@ function AdminPage() {
                         ))}
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-foreground">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-foreground lg:px-4 md:px-3">
                       ${order.total.toFixed(2)}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-6 py-4 whitespace-nowrap lg:px-4 md:px-3">
                       <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${statusColors[order.status]}`}>
                         {order.status.charAt(0).toUpperCase() + order.status.slice(1)}
                       </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium lg:px-4 md:px-3">
                       <Button
                         theme="outline"
                         size="sm"
@@ -385,12 +385,12 @@ function AdminPage() {
 
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="px-6 py-4 border-t border-border">
-              <div className="flex items-center justify-between">
+            <div className="px-6 py-4 border-t border-border lg:px-4 md:px-3">
+              <div className="flex items-center justify-between lg:flex-col lg:gap-4 lg:items-start">
                 <div className="text-sm text-muted-foreground">
                   Showing {startIndex + 1} to {Math.min(endIndex, filteredOrders.length)} of {filteredOrders.length} results
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 lg:w-full lg:justify-center">
                   <Button
                     theme="outline"
                     size="sm"

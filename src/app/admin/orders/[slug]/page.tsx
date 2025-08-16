@@ -196,7 +196,7 @@ function OrderDetailsPage() {
 
   if (loading) {
     return (
-      <div className="py-40 px-safe md:py-24">
+      <div className="py-40 px-safe lg:py-32 md:py-24">
         <div className="container">
           <div className="flex items-center justify-center h-64">
             <div className="text-center">
@@ -211,10 +211,10 @@ function OrderDetailsPage() {
 
   if (!order) {
     return (
-      <div className="py-40 px-safe md:py-24">
+      <div className="py-40 px-safe lg:py-32 md:py-24">
         <div className="container">
           <div className="text-center">
-            <h1 className="fs-32 font-bold text-foreground mb-4">Order Not Found</h1>
+            <h1 className="fs-32 font-bold text-foreground mb-4 lg:fs-28 md:fs-24">Order Not Found</h1>
             <p className="text-muted-foreground mb-6">The order you're looking for doesn't exist.</p>
             <Button onClick={() => router.push(ROUTE.admin)}>
               Back to Admin
@@ -228,7 +228,7 @@ function OrderDetailsPage() {
   const currentStatus = statusConfig[order.status];
 
   return (
-    <div className="py-40 px-safe md:py-24">
+    <div className="py-40 px-safe lg:py-32 md:py-24">
       <div className="container">
         {/* Header */}
         <div className="mb-8">
@@ -243,7 +243,7 @@ function OrderDetailsPage() {
 
           <div className="flex items-start justify-between md:flex-col md:gap-4">
             <div>
-              <h1 className="fs-32 font-bold text-foreground mb-2">
+              <h1 className="fs-32 font-bold text-foreground mb-2 lg:fs-28 md:fs-24">
                 Order {order.orderNumber}
               </h1>
               <p className="text-muted-foreground">
@@ -260,30 +260,30 @@ function OrderDetailsPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-3 gap-8 lg:grid-cols-1">
           {/* Main Content */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="col-span-2 space-y-6 lg:col-span-1">
             {/* Order Summary */}
-            <div className="bg-card border border-border rounded-xl p-6">
-              <h2 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
+            <div className="bg-card border border-border rounded-xl p-6 lg:p-5 md:p-4">
+              <h2 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2 lg:text-lg md:text-base">
                 <Package className="h-5 w-5" />
                 Order Summary
               </h2>
 
               <div className="space-y-4">
                 {order.items.map((item, index) => (
-                  <div key={index} className="flex items-center gap-4 p-4 bg-muted/30 rounded-lg">
-                    <div className="w-16 h-16 bg-muted rounded-lg flex items-center justify-center">
-                      <Package className="h-6 w-6 text-muted-foreground" />
+                  <div key={index} className="flex items-center gap-4 p-4 bg-muted/30 rounded-lg lg:p-3 md:p-3">
+                    <div className="w-16 h-16 bg-muted rounded-lg flex items-center justify-center lg:w-12 lg:h-12 md:w-10 md:h-10">
+                      <Package className="h-6 w-6 text-muted-foreground lg:h-5 lg:w-5 md:h-4 md:w-4" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-medium text-foreground">{item.product.name}</h3>
-                      <p className="text-sm text-muted-foreground">
+                      <h3 className="font-medium text-foreground lg:text-sm md:text-sm">{item.product.name}</h3>
+                      <p className="text-sm text-muted-foreground lg:text-xs md:text-xs">
                         Qty: {item.quantity} × {formatCurrency(item.product.price)}
                       </p>
                     </div>
                     <div className="text-right">
-                      <p className="font-medium text-foreground">{formatCurrency(item.subtotal)}</p>
+                      <p className="font-medium text-foreground lg:text-sm md:text-sm">{formatCurrency(item.subtotal)}</p>
                     </div>
                   </div>
                 ))}
@@ -291,19 +291,19 @@ function OrderDetailsPage() {
 
               <div className="mt-6 pt-6 border-t border-border">
                 <div className="space-y-2">
-                  <div className="flex justify-between text-sm">
+                  <div className="flex justify-between text-sm lg:text-xs md:text-xs">
                     <span className="text-muted-foreground">Subtotal:</span>
                     <span>{formatCurrency(order.subtotal)}</span>
                   </div>
-                  <div className="flex justify-between text-sm">
+                  <div className="flex justify-between text-sm lg:text-xs md:text-xs">
                     <span className="text-muted-foreground">Tax:</span>
                     <span>{formatCurrency(order.tax)}</span>
                   </div>
-                  <div className="flex justify-between text-sm">
+                  <div className="flex justify-between text-sm lg:text-xs md:text-xs">
                     <span className="text-muted-foreground">Shipping:</span>
                     <span>{formatCurrency(order.shipping)}</span>
                   </div>
-                  <div className="flex justify-between text-lg font-semibold pt-2 border-t border-border">
+                  <div className="flex justify-between text-lg font-semibold pt-2 border-t border-border lg:text-base md:text-base">
                     <span>Total:</span>
                     <span>{formatCurrency(order.total)}</span>
                   </div>
@@ -312,12 +312,12 @@ function OrderDetailsPage() {
             </div>
 
             {/* Status Update */}
-            <div className="bg-card border border-border rounded-xl p-6">
-              <h2 className="text-xl font-semibold text-foreground mb-4">Update Order Status</h2>
+            <div className="bg-card border border-border rounded-xl p-6 lg:p-5 md:p-4">
+              <h2 className="text-xl font-semibold text-foreground mb-4 lg:text-lg md:text-base">Update Order Status</h2>
 
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
+                  <label className="block text-sm font-medium text-foreground mb-2 lg:text-xs md:text-xs">
                     Current Status: <span className="font-normal text-muted-foreground">{currentStatus.description}</span>
                   </label>
                   <select
@@ -345,9 +345,9 @@ function OrderDetailsPage() {
 
             {/* Notes */}
             {order.notes && (
-              <div className="bg-card border border-border rounded-xl p-6">
-                <h2 className="text-xl font-semibold text-foreground mb-4">Order Notes</h2>
-                <p className="text-muted-foreground">{order.notes}</p>
+              <div className="bg-card border border-border rounded-xl p-6 lg:p-5 md:p-4">
+                <h2 className="text-xl font-semibold text-foreground mb-4 lg:text-lg md:text-base">Order Notes</h2>
+                <p className="text-muted-foreground lg:text-sm md:text-sm">{order.notes}</p>
               </div>
             )}
           </div>
@@ -355,36 +355,36 @@ function OrderDetailsPage() {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Customer Details */}
-            <div className="bg-card border border-border rounded-xl p-6">
-              <h2 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
+            <div className="bg-card border border-border rounded-xl p-6 lg:p-5 md:p-4">
+              <h2 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2 lg:text-lg md:text-base">
                 <User className="h-5 w-5" />
                 Customer Details
               </h2>
 
               <div className="space-y-3">
                 <div>
-                  <p className="text-sm text-muted-foreground">Name</p>
-                  <p className="font-medium text-foreground">
+                  <p className="text-sm text-muted-foreground lg:text-xs md:text-xs">Name</p>
+                  <p className="font-medium text-foreground lg:text-sm md:text-sm">
                     {order.customer.firstName} {order.customer.lastName}
                   </p>
                 </div>
 
                 <div>
-                  <p className="text-sm text-muted-foreground">Email</p>
-                  <p className="font-medium text-foreground">{order.customer.email}</p>
+                  <p className="text-sm text-muted-foreground lg:text-xs md:text-xs">Email</p>
+                  <p className="font-medium text-foreground lg:text-sm md:text-sm">{order.customer.email}</p>
                 </div>
 
                 {order.customer.phone && (
                   <div>
-                    <p className="text-sm text-muted-foreground">Phone</p>
-                    <p className="font-medium text-foreground">{order.customer.phone}</p>
+                    <p className="text-sm text-muted-foreground lg:text-xs md:text-xs">Phone</p>
+                    <p className="font-medium text-foreground lg:text-sm md:text-sm">{order.customer.phone}</p>
                   </div>
                 )}
 
                 {order.customer.address && (
                   <div>
-                    <p className="text-sm text-muted-foreground">Address</p>
-                    <div className="text-foreground">
+                    <p className="text-sm text-muted-foreground lg:text-xs md:text-xs">Address</p>
+                    <div className="text-foreground lg:text-sm md:text-sm">
                       <p>{order.customer.address.street}</p>
                       <p>{order.customer.address.city}, {order.customer.address.state} {order.customer.address.zipCode}</p>
                       <p>{order.customer.address.country}</p>
@@ -395,44 +395,44 @@ function OrderDetailsPage() {
             </div>
 
             {/* Order Information */}
-            <div className="bg-card border border-border rounded-xl p-6">
-              <h2 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
+            <div className="bg-card border border-border rounded-xl p-6 lg:p-5 md:p-4">
+              <h2 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2 lg:text-lg md:text-base">
                 <Calendar className="h-5 w-5" />
                 Order Information
               </h2>
 
               <div className="space-y-3">
                 <div>
-                  <p className="text-sm text-muted-foreground">Order ID</p>
-                  <p className="font-medium text-foreground">{order.id}</p>
+                  <p className="text-sm text-muted-foreground lg:text-xs md:text-xs">Order ID</p>
+                  <p className="font-medium text-foreground lg:text-sm md:text-sm">{order.id}</p>
                 </div>
 
                 <div>
-                  <p className="text-sm text-muted-foreground">Order Number</p>
-                  <p className="font-medium text-foreground">{order.orderNumber}</p>
+                  <p className="text-sm text-muted-foreground lg:text-xs md:text-xs">Order Number</p>
+                  <p className="font-medium text-foreground lg:text-sm md:text-sm">{order.orderNumber}</p>
                 </div>
 
                 <div>
-                  <p className="text-sm text-muted-foreground">Created</p>
-                  <p className="font-medium text-foreground">{formatDate(order.createdAt)}</p>
+                  <p className="text-sm text-muted-foreground lg:text-xs md:text-xs">Created</p>
+                  <p className="font-medium text-foreground lg:text-sm md:text-sm">{formatDate(order.createdAt)}</p>
                 </div>
 
                 <div>
-                  <p className="text-sm text-muted-foreground">Last Updated</p>
-                  <p className="font-medium text-foreground">{formatDate(order.updatedAt)}</p>
+                  <p className="text-sm text-muted-foreground lg:text-xs md:text-xs">Last Updated</p>
+                  <p className="font-medium text-foreground lg:text-sm md:text-sm">{formatDate(order.updatedAt)}</p>
                 </div>
 
                 {order.estimatedDelivery && (
                   <div>
-                    <p className="text-sm text-muted-foreground">Estimated Delivery</p>
-                    <p className="font-medium text-foreground">{formatDate(order.estimatedDelivery)}</p>
+                    <p className="text-sm text-muted-foreground lg:text-xs md:text-xs">Estimated Delivery</p>
+                    <p className="font-medium text-foreground lg:text-sm md:text-sm">{formatDate(order.estimatedDelivery)}</p>
                   </div>
                 )}
 
                 {order.trackingNumber && (
                   <div>
-                    <p className="text-sm text-muted-foreground">Tracking Number</p>
-                    <p className="font-medium text-foreground">{order.trackingNumber}</p>
+                    <p className="text-sm text-muted-foreground lg:text-xs md:text-xs">Tracking Number</p>
+                    <p className="font-medium text-foreground lg:text-sm md:text-sm">{order.trackingNumber}</p>
                   </div>
                 )}
               </div>
