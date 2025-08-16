@@ -22,14 +22,19 @@ function Header() {
 
   const isAdminRoute = pathname?.startsWith('/admin');
   const isStoreRoute = pathname?.startsWith('/store') || pathname === '/';
+  const isHomepage = pathname === '/';
+
+  // Use white colors on homepage for visibility over black hero
+  const textColor = isHomepage ? 'text-white' : 'text-foreground';
+  const bgColor = isHomepage ? 'bg-white' : 'bg-foreground';
 
   return (
     <>
-      <header className="absolute left-0 right-0 top-0 z-50 h-16 px-safe pt-safe">
+      <header className='absolute left-0 right-0 top-0 z-50 h-16 px-safe pt-safe'>
         <nav className="container flex h-full items-center justify-between" aria-label="Global">
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/" className={`flex items-center gap-2 ${textColor}`}>
             <Logo className="sm:size-8" width={40} height={40} alt="Logo" />
-            <div className="flex flex-col text-lg font-extrabold text-foreground leading-none sm:text-md">
+            <div className={`flex flex-col text-lg font-extrabold leading-none sm:text-md ${textColor}`}>
               <span>SUPPLEMENT</span>
               <span>STORE</span>
             </div>
@@ -41,7 +46,7 @@ function Header() {
               <li key={index}>
                 <Link
                   size="sm"
-                  theme={isAdminRoute && href === ROUTE.admin ? "primary" : "black"}
+                  theme={isAdminRoute && href === ROUTE.admin ? "primary" : isHomepage ? "white" : "black"}
                   href={href as any}
                 >
                   {label}
@@ -52,23 +57,23 @@ function Header() {
 
           {/* Right Side Actions */}
           <div className="flex items-center gap-x-4">
-            <ThemeToggle />
+            <ThemeToggle className={textColor} />
 
             {/* Cart Icon for Store Routes */}
             {isStoreRoute && (
               <Link href={ROUTE.cart as any} className="relative p-2">
                 <span className="sr-only">Shopping Cart</span>
-                <CartIcon width={24} height={24} />
+                <CartIcon width={24} height={24} className={textColor} />
                 {/* Cart Badge - will be dynamic later */}
-                {/* <span className="absolute -top-1 -left-1 h-5 w-5 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center">
+                <span className={`absolute -top-1 -left-1 h-5 w-5 rounded-full text-xs flex items-center justify-center ${isHomepage ? 'text-black bg-white' : 'bg-foreground text-background'}`}>
                   0
-                </span> */}
+                </span>
               </Link>
             )}
 
             <Button
-              className="font-medium md:hidden"
-              theme="black-filled"
+              className='font-medium md:hidden'
+              theme={isHomepage ? "outline" : "black-filled"}
               size="sm"
               href={ROUTE.index}
             >
@@ -77,6 +82,7 @@ function Header() {
 
             <Burger
               className="hidden md:block"
+              spanClassName={bgColor}
               isToggled={isMobileMenuOpen}
               onClick={toggleMobileMenu}
             />

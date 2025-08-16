@@ -7,10 +7,12 @@ const ANIMATION_DURATION = 0.2;
 
 function Burger({
   className,
+  spanClassName,
   isToggled,
   onClick,
 }: {
   className?: string;
+  spanClassName?: string;
   isToggled: boolean;
   onClick: () => void;
 }) {
@@ -26,7 +28,7 @@ function Burger({
         <div className="absolute -inset-5" aria-hidden />
         <span className="relative block h-7 w-7">
           <m.span
-            className="absolute right-0 top-1 block h-0.5 w-7 rounded-full bg-foreground transition-colors duration-200"
+            className={clsx("absolute right-0 top-1 block h-0.5 w-7 rounded-full bg-foreground transition-colors duration-200", spanClassName)}
             variants={{
               initial: {
                 top: 4,
@@ -44,7 +46,7 @@ function Burger({
             }}
           />
           <m.span
-            className="absolute right-0 top-[13px] block h-0.5 w-7 rounded-full bg-foreground transition-colors duration-200"
+            className={clsx("absolute right-0 top-[13px] block h-0.5 w-7 rounded-full bg-foreground transition-colors duration-200", spanClassName)}
             variants={{
               initial: {
                 opacity: 1,
@@ -57,7 +59,7 @@ function Burger({
             }}
           />
           <m.span
-            className="absolute bottom-1 right-0 block h-0.5 w-7 rounded-full bg-foreground transition-colors duration-200"
+            className={clsx("absolute bottom-1 right-0 block h-0.5 w-7 rounded-full bg-foreground transition-colors duration-200", spanClassName)}
             variants={{
               initial: {
                 bottom: 4,

@@ -14,7 +14,7 @@ function Footer() {
   return (
     <footer className="relative border-t border-border py-10 px-safe pb-safe-or-10">
       <div className="container">
-        <div className="flex justify-between md:flex-col">
+        <div className="flex justify-between items-start md:flex-col">
           <Link href="/" className="flex items-center gap-2">
             <Logo className="sm:size-8" width={40} height={40} alt="Logo" />
             <div className="flex flex-col text-lg font-extrabold text-foreground leading-none sm:text-md">
